@@ -1,3 +1,11 @@
 <resources>
     <string name="app_name">RockPaperScissor</string>
+    <string name="player">You</string>
+    <string name="computer">Computer</string>
+    <string name="versus">VS</string>
+    <string name="text_you_lose">You Lose</string>
+    <string name="text_you_win">You Win !!</string>
+    <string name="text_draw">Tie !!</string>
+    <string name="text_start_game">START</string>
+    <string name="text_rockPaperScissor">Rock Paper Scissor</string>
 </resources>

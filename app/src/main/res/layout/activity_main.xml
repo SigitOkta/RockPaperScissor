@@ -4,8 +4,174 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="#FFF5E1"
     tools:context=".MainActivity">
-    
+
+    <TextView
+        android:id="@+id/tv_result"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="@dimen/_16ssp"
+        android:textSize="@dimen/_32ssp"
+        style="@style/CustomText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:text="Player Win!" />
+
+    <LinearLayout
+        android:id="@+id/ll_player"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginBottom="2dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toTopOf="@+id/ll_button"
+        app:layout_constraintEnd_toStartOf="@id/ll_versus"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/tv_result"
+        app:layout_constraintVertical_bias="0.239">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="@string/player"
+            style="@style/CustomText"
+            android:textSize="@dimen/_18ssp" />
+
+        <ImageView
+            android:id="@+id/iv_player_rock"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/ic_rock"
+            tools:background="@drawable/ic_background_image" />
+
+        <ImageView
+            android:id="@+id/iv_player_paper"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_16ssp"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/ic_paper" />
+
+        <ImageView
+            android:id="@+id/iv_player_scissor"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_16ssp"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/ic_scissor" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_versus"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginStart="@dimen/_8sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        app:layout_constraintBottom_toBottomOf="@id/ll_player"
+        app:layout_constraintEnd_toStartOf="@id/ll_computer"
+        app:layout_constraintStart_toEndOf="@id/ll_player"
+        app:layout_constraintTop_toTopOf="@id/ll_player">
+
+        <View
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_5sdp"
+            android:layout_gravity="center"
+            android:background="@color/beige" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/_5sdp"
+            android:layout_marginEnd="@dimen/_5sdp"
+            android:text="@string/versus"
+            android:textSize="@dimen/_24ssp"
+            style="@style/CustomText" />
+
+        <View
+            android:layout_width="@dimen/_20sdp"
+            android:layout_height="@dimen/_5sdp"
+            android:layout_gravity="center"
+            android:background="@color/beige" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_computer"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="@dimen/_16sdp"
+        android:gravity="center"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@id/ll_player"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@id/ll_versus"
+        app:layout_constraintTop_toTopOf="@id/ll_player">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:layout_marginBottom="@dimen/_8sdp"
+            android:text="@string/computer"
+            android:textSize="@dimen/_18ssp"
+            style="@style/CustomText" />
+
+        <ImageView
+            android:id="@+id/iv_computer_rock"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/ic_rock" />
+
+        <ImageView
+
+            android:id="@+id/iv_computer_paper"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_16ssp"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/ic_paper" />
+
+        <ImageView
+            android:id="@+id/iv_computer_scissor"
+            android:layout_width="@dimen/_100sdp"
+            android:layout_height="@dimen/_100sdp"
+            android:layout_marginTop="@dimen/_16ssp"
+            android:padding="@dimen/_4sdp"
+            android:src="@drawable/ic_scissor" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/ll_button"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        app:layout_constraintBottom_toBottomOf="parent">
+
+        <ImageView
+            android:id="@+id/iv_refresh"
+            android:layout_width="@dimen/_60sdp"
+            android:layout_height="@dimen/_60sdp"
+            android:background="@color/teal"
+            android:padding="@dimen/_8sdp"
+            android:src="@drawable/ic_refresh" />
+
+        <TextView
+            android:id="@+id/tv_start"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="@color/beige"
+            android:gravity="center"
+            android:text="@string/text_start_game"
+            android:textColor="@color/white"
+            android:textSize="@dimen/_32ssp"
+            android:textStyle="bold" />
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
