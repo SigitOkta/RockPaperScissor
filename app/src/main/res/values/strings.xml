@@ -8,4 +8,21 @@
     <string name="text_draw">Tie !!</string>
     <string name="text_start_game">START</string>
     <string name="text_rockPaperScissor">Rock Paper Scissor</string>
+    <string name="text_previous">Previous</string>
+    <string name="text_next">Next</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="text_input_your_name">Please input your name..</string>
+    <string name="text_restart_game">Restart</string>
+    <string name="text_hint_name">name</string>
+    <string name="text_choose_your_opponent">Choose your opponent</string>
+    <string name="placeholder_menu_vs_player">%s VS Player </string>
+    <string name="placeholder_menu_vs_computer">%s VS Computer</string>
+    <string name="placeholder_win">%s Win !</string>
+    <string name="text_player_two_win">Player Two Win !</string>
+    <string name="text_play_again">Play Again</string>
+    <string name="text_back_menu">Back to menu</string>
+    <string name="text_game_result">Game Result</string>
+    <string name="text_player_one_turn">Player One Turn</string>
+    <string name="text_player_two_turn">Player Two Turn</string>
+    <string name="text_submit">Submit</string>
 </resources>

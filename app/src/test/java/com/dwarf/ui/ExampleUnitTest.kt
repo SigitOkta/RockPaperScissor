@@ -1,4 +1,4 @@
-package com.dwarf.rockpaperscissor
+package com.dwarf.ui
 
 import org.junit.Test
 

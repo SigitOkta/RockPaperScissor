@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:background="@color/beige1"
+    android:orientation="vertical"
+    android:padding="@dimen/_12sdp">
+
+    <TextView
+        android:gravity="center"
+        android:textSize="@dimen/_14sdp"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/text_game_result" />
+
+    <TextView
+        android:id="@+id/tv_winner"
+        android:gravity="center"
+        android:textSize="@dimen/_24sdp"
+        android:textStyle="bold"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginBottom="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Player One Win !" />
+
+    <Button
+        android:id="@+id/btn_play_again"
+        android:layout_gravity="center"
+        android:text="@string/text_play_again"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/beige"
+        android:backgroundTint="@color/purple"/>
+    <Button
+        android:id="@+id/btn_back_to_menu"
+        android:layout_gravity="center"
+        android:text="@string/text_back_menu"
+        android:layout_marginStart="@dimen/_12sdp"
+        android:layout_marginEnd="@dimen/_12sdp"
+        android:layout_marginTop="@dimen/_6sdp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textColor="@color/purple"
+        android:backgroundTint="@color/beige"/>
+
+</LinearLayout>

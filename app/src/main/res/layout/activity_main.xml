@@ -4,16 +4,15 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="#FFF5E1"
-    tools:context=".MainActivity">
+    android:background="@color/beige1">
 
     <TextView
         android:id="@+id/tv_result"
+        style="@style/CustomText"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="@dimen/_16ssp"
         android:textSize="@dimen/_32ssp"
-        style="@style/CustomText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,21 +22,22 @@
         android:id="@+id/ll_player"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="@dimen/_16sdp"
+        android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginBottom="2dp"
+        android:layout_marginEnd="@dimen/_8sdp"
         android:orientation="vertical"
-        app:layout_constraintBottom_toTopOf="@+id/ll_button"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@id/ll_versus"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/tv_result"
-        app:layout_constraintVertical_bias="0.239">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            android:id="@+id/tv_name"
+            style="@style/CustomText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/_8sdp"
             android:text="@string/player"
-            style="@style/CustomText"
             android:textSize="@dimen/_18ssp" />
 
         <ImageView
@@ -70,13 +70,13 @@
         android:id="@+id/ll_versus"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:orientation="horizontal"
         android:layout_marginStart="@dimen/_8sdp"
         android:layout_marginEnd="@dimen/_8sdp"
-        app:layout_constraintBottom_toBottomOf="@id/ll_player"
-        app:layout_constraintEnd_toStartOf="@id/ll_computer"
-        app:layout_constraintStart_toEndOf="@id/ll_player"
-        app:layout_constraintTop_toTopOf="@id/ll_player">
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+       app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <View
             android:layout_width="@dimen/_20sdp"
@@ -85,13 +85,13 @@
             android:background="@color/beige" />
 
         <TextView
+            style="@style/CustomText"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginStart="@dimen/_5sdp"
             android:layout_marginEnd="@dimen/_5sdp"
             android:text="@string/versus"
-            android:textSize="@dimen/_24ssp"
-            style="@style/CustomText" />
+            android:textSize="@dimen/_24ssp" />
 
         <View
             android:layout_width="@dimen/_20sdp"
@@ -104,21 +104,22 @@
         android:id="@+id/ll_computer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="@dimen/_16sdp"
+        android:layout_marginEnd="@dimen/_8sdp"
+        android:layout_marginStart="@dimen/_8sdp"
         android:gravity="center"
         android:orientation="vertical"
-        app:layout_constraintBottom_toBottomOf="@id/ll_player"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@id/ll_versus"
-        app:layout_constraintTop_toTopOf="@id/ll_player">
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
+            style="@style/CustomText"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginBottom="@dimen/_8sdp"
             android:text="@string/computer"
-            android:textSize="@dimen/_18ssp"
-            style="@style/CustomText" />
+            android:textSize="@dimen/_18ssp" />
 
         <ImageView
             android:id="@+id/iv_computer_rock"
@@ -154,20 +155,20 @@
         app:layout_constraintBottom_toBottomOf="parent">
 
         <ImageView
-            android:id="@+id/iv_refresh"
+            android:id="@+id/iv_close"
             android:layout_width="@dimen/_60sdp"
             android:layout_height="@dimen/_60sdp"
             android:background="@color/teal"
             android:padding="@dimen/_8sdp"
-            android:src="@drawable/ic_refresh" />
+            android:src="@drawable/ic_baseline_close_24" />
 
         <TextView
-            android:id="@+id/tv_start"
+            android:id="@+id/tv_action"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:background="@color/beige"
             android:gravity="center"
-            android:text="@string/text_start_game"
+            android:text="@string/text_restart_game"
             android:textColor="@color/white"
             android:textSize="@dimen/_32ssp"
             android:textStyle="bold" />

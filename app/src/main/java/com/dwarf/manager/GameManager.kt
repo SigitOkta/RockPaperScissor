@@ -6,14 +6,14 @@ import com.dwarf.enum.HandGesture
 import com.dwarf.enum.HandGestureState
 import com.dwarf.enum.PlayerSide
 import com.dwarf.model.Player
-import com.dwarf.rockpaperscissor.R
+import com.dwarf.ui.R
+
 import kotlin.random.Random
 
 interface GameManager {
     fun initGame()
     fun chooseHandGesture(index: Int)
     fun resetGame()
-    fun playGame()
 }
 
 interface GameListener {
@@ -24,14 +24,14 @@ interface GameListener {
 
 
 
-class VersusComputerGameManager(private val listener: GameListener) : GameManager {
+open class RockPaperScissorGameManagerImpl(private val listener: GameListener) : GameManager {
 
-    private lateinit var playerOne: Player
-    private lateinit var playerTwo: Player
-    private lateinit var gameState: GameState
+    protected lateinit var playerOne: Player
+    protected lateinit var playerTwo: Player
+    protected lateinit var state: GameState
 
     companion object {
-        private val TAG = VersusComputerGameManager::class.java.simpleName
+        private val TAG = RockPaperScissorGameManagerImpl::class.java.simpleName
     }
 
     override fun initGame() {
@@ -53,18 +53,19 @@ class VersusComputerGameManager(private val listener: GameListener) : GameManage
         )
     }
 
-    private fun setGameState(newGameState: GameState) {
-        gameState = newGameState
-        listener.onGameStateChanged(gameState)
+    protected fun setGameState(newGameState: GameState) {
+        state = newGameState
+        listener.onGameStateChanged(state)
     }
 
     override fun chooseHandGesture(index: Int) {
-        if (gameState != GameState.FINISHED) {
+        if (state != GameState.FINISHED) {
             setPlayerOneGesture(getPlayerPositionByOrdinal(index), HandGestureState.ACTIVE)
+            startGame()
         }
     }
 
-    private fun setPlayerOneGesture(
+    protected fun setPlayerOneGesture(
         handGesture: HandGesture = playerOne.handGesture,
         handGestureState: HandGestureState = playerOne.handGestureState
     ) {
@@ -79,7 +80,7 @@ class VersusComputerGameManager(private val listener: GameListener) : GameManage
         Log.d(TAG, "You choose $handGesture")
     }
 
-    private fun setPlayerTwoGesture(
+    protected fun setPlayerTwoGesture(
         handGesture: HandGesture = playerTwo.handGesture,
         handGestureState: HandGestureState = playerTwo.handGestureState
     ) {
@@ -91,27 +92,20 @@ class VersusComputerGameManager(private val listener: GameListener) : GameManage
             playerTwo,
             getPlayerBackgroundByState(playerTwo.handGestureState)
         )
-        Log.d(TAG, "Computer choose $handGesture")
+        Log.d(TAG, "Player two choose $handGesture")
     }
 
-    private fun getPlayerPositionByOrdinal(index: Int): HandGesture {
+    protected fun getPlayerPositionByOrdinal(index: Int): HandGesture {
         return HandGesture.values()[index]
     }
 
     override fun resetGame() {
-        if (gameState == GameState.FINISHED) {
+        if (state == GameState.FINISHED) {
             initGame()
         }
     }
 
-    override fun playGame() {
-        if (gameState != GameState.FINISHED) {
-            startGame()
-        }
-    }
-
-
-    private fun startGame() {
+    protected fun startGame() {
         playerTwo.apply {
             handGesture = getPlayerTwoPosition()
         }
@@ -140,13 +134,13 @@ class VersusComputerGameManager(private val listener: GameListener) : GameManage
             playerOne
         }
         Log.d(TAG,
-            "You choose ${playerOne.handGesture} Computer choose ${playerTwo.handGesture} winner ${winner.playerSide}"
+            "You choose ${playerOne.handGesture} Player Two choose ${playerTwo.handGesture} winner ${winner.playerSide}"
         )
         setGameState(GameState.FINISHED)
-        listener.onGameFinished(gameState, winner)
+        listener.onGameFinished(state, winner)
     }
 
-    private fun getPlayerTwoPosition(): HandGesture {
+    open fun getPlayerTwoPosition(): HandGesture {
         val randomPosition = Random.nextInt(0, until = HandGesture.values().size)
         return getPlayerPositionByOrdinal(randomPosition)
     }
@@ -157,4 +151,46 @@ class VersusComputerGameManager(private val listener: GameListener) : GameManage
             HandGestureState.NONACTIVE -> R.drawable.ic_background_image_white
         }
     }
+}
+
+class MultiplayerRockPaperScissorGameManager(listener: GameListener) : RockPaperScissorGameManagerImpl(listener){
+    override fun initGame() {
+        super.initGame()
+        setGameState(GameState.PLAYER_ONE_TURN)
+    }
+
+    override fun getPlayerTwoPosition(): HandGesture {
+        return playerTwo.handGesture
+    }
+
+    override fun chooseHandGesture(index: Int) {
+        if (state == GameState.PLAYER_ONE_TURN){
+            setPlayerOneGesture(getPlayerPositionByOrdinal(index), HandGestureState.ACTIVE)
+            setGameState(GameState.PLAYER_TWO_TURN)
+        } else if (state == GameState.PLAYER_TWO_TURN){
+            setPlayerTwoGesture(getPlayerPositionByOrdinal(index), HandGestureState.ACTIVE)
+            startGame()
+        }
+    }
+
+
+    override fun resetGame() {
+        when(state){
+            GameState.PLAYER_ONE_TURN -> {
+                initGame()
+            }
+            GameState.PLAYER_TWO_TURN -> {
+                initGame()
+            }
+            GameState.FINISHED -> {
+                initGame()
+            }
+            else -> return
+        }
+    }
+
+
+
+
+
 }
