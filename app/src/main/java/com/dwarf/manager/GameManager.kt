@@ -175,18 +175,7 @@ class MultiplayerRockPaperScissorGameManager(listener: GameListener) : RockPaper
 
 
     override fun resetGame() {
-        when(state){
-            GameState.PLAYER_ONE_TURN -> {
-                initGame()
-            }
-            GameState.PLAYER_TWO_TURN -> {
-                initGame()
-            }
-            GameState.FINISHED -> {
-                initGame()
-            }
-            else -> return
-        }
+        initGame()
     }
 
 

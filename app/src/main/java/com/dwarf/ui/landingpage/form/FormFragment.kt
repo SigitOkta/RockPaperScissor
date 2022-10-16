@@ -36,7 +36,12 @@ class FormFragment : Fragment() {
     private fun setOnClickListener(){
         binding.btnName.setOnClickListener {
             val name = binding.edtName.text.toString().trim()
-            listener?.onNameSubmitted(name)
+            if (name.isEmpty()){
+                Snackbar.make(binding.root,getString(R.string.warning_empty_name), Snackbar.LENGTH_SHORT).show()
+            }else{
+                listener?.onNameSubmitted(name)
+            }
+
 
         }
     }

@@ -25,4 +25,5 @@
     <string name="text_player_one_turn">Player One Turn</string>
     <string name="text_player_two_turn">Player Two Turn</string>
     <string name="text_submit">Submit</string>
+    <string name="warning_empty_name">You must input your name</string>
 </resources>
