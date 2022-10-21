@@ -36,8 +36,8 @@ open class RockPaperScissorGameManagerImpl(private val listener: GameListener) :
 
     override fun initGame() {
         setGameState(GameState.IDLE)
-        playerOne = Player(PlayerSide.PLAYER_ONE, HandGesture.PAPER, HandGestureState.ACTIVE)
-        playerTwo = Player(PlayerSide.PLAYER_TWO, HandGesture.PAPER, HandGestureState.ACTIVE)
+        playerOne = Player(PlayerSide.PLAYER_ONE, HandGesture.PAPER,HandGestureState.NONACTIVE)
+        playerTwo = Player(PlayerSide.PLAYER_TWO, HandGesture.PAPER, HandGestureState.NONACTIVE)
         notifyPlayerDataChanged()
         setGameState(GameState.STARTED)
     }
